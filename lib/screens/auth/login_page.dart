@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
             "Password",
             (onValidateVal) {
               if (onValidateVal == null && onValidateVal.isEmpty) {
-                return "Password Can\t be Empty";
+                return "Password Can't be Empty";
               }
               return null;
             },

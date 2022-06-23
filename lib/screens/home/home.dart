@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
                 if (model.hasData) {
                   print(model.data!.name);
                   return Text(
-                    "Hi!, ${model.data!.name}",
+                    "Hello, ${model.data!.name}",
                     style:
                         TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                   );
@@ -117,7 +117,7 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      "Best Destination",
+                      "All Museum",
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),

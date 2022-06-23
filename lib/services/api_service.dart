@@ -26,10 +26,13 @@ class APIService {
       headers: requestHeaders,
       body: jsonEncode(model.toJson()),
     );
-
+    print("luaar");
+    print(response.statusCode);
     if (response.statusCode == 200) {
       //Shared Services
       await SharedServices.setLoginDetails(loginResponseJson(response.body));
+      print("dalemmasz");
+      print(response.body);
       return true;
     } else {
       return false;

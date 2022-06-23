@@ -36,32 +36,23 @@ class Data {
   Data({
     required this.id,
     required this.name,
+    required this.username,
     required this.email,
-    this.emailVerifiedAt,
-    required this.age,
-    required this.location,
-    required this.role,
     this.createdAt,
     this.updatedAt,
   });
   late final int id;
   late final String name;
+  late final String username;
   late final String email;
-  late final Null emailVerifiedAt;
-  late final String age;
-  late final String location;
-  late final String role;
-  late final Null createdAt;
-  late final Null updatedAt;
+  late final String? createdAt;
+  late final String? updatedAt;
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    username = json['username'];
     email = json['email'];
-    emailVerifiedAt = null;
-    age = json['age'];
-    location = json['location'];
-    role = json['role'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -70,11 +61,8 @@ class Data {
     final _data = <String, dynamic>{};
     _data['id'] = id;
     _data['name'] = name;
+    _data['username'] = username;
     _data['email'] = email;
-    _data['email_verified_at'] = emailVerifiedAt;
-    _data['age'] = age;
-    _data['location'] = location;
-    _data['role'] = role;
     _data['created_at'] = createdAt;
     _data['updated_at'] = updatedAt;
     return _data;
