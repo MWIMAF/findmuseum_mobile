@@ -52,6 +52,7 @@ class APIService {
       headers: requestHeaders,
       body: jsonEncode(model.toJson()),
     );
+    print(response.body);
 
     return registerResponseJson(response.body);
   }

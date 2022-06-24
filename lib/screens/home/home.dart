@@ -18,8 +18,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 Future<List<MuseumData>> fetchMuseum() async {
-  final response =
-      await http.get(Uri.parse('http://10.0.2.2:8000/api/museum'));
+  final response = await http.get(Uri.parse('http://10.0.2.2:8000/api/museum'));
   if (response.statusCode == 200) {
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((data) => MuseumData.fromJson(data)).toList();
@@ -121,97 +120,130 @@ class _HomeState extends State<Home> {
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const CityPage(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'See All',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ],
             ),
           ),
           FutureBuilder<List<MuseumData>>(
-                    future: futureData,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        List<MuseumData> museumData =
-                            snapshot.requireData;
-                        return SizedBox(
-                          height: MediaQuery.of(context).size.height,
-                          // width: double.infinity,
-                          child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            physics: BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: museumData.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              DetailMuseum(
-                                            name: museumData[index]
-                                                .name,
-                                            desc: museumData[index]
-                                                .desc,
-                                            img: museumData[index].image,
-                                          ),
+            future: futureData,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<MuseumData> museumData = snapshot.requireData;
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  // width: double.infinity,
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    physics: BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: museumData.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailMuseum(
+                                          name: museumData[index].name,
+                                          desc: museumData[index].desc,
+                                          img: museumData[index].image,
                                         ),
-                                      );
-                                    },
-                                    child: Container(
-                                      margin: const EdgeInsets.all(10.0),
-                                      width: double.infinity,
-                                      height: 200,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                          image: NetworkImage(
-                                              museumData[index].image),
-                                          fit: BoxFit.cover,
-                                          colorFilter: ColorFilter.mode(
-                                              Colors.black.withOpacity(0.5),
-                                              BlendMode.darken),
-                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.only(left: 2.0),
+                                    width: 170,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            museumData[index].image),
+                                        fit: BoxFit.cover,
+                                        colorFilter: ColorFilter.mode(
+                                            Colors.black.withOpacity(0.5),
+                                            BlendMode.darken),
                                       ),
                                     ),
                                   ),
-                                  Text(
-                                    museumData[index].name,
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 10.0,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 8.0,
+                                      ),
+                                      Text(
+                                        museumData[index].name,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(
+                                        height: 8.0,
+                                      ),
+                                      Text(
+                                        museumData[index].excerpt,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      SizedBox(
+                                        height: 25.0,
+                                      ),
+                                      OutlinedButton(
+                                        style: OutlinedButton.styleFrom(
+                                            primary: Colors.white,
+                                            backgroundColor: Colors.black),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DetailMuseum(
+                                                name: museumData[index].name,
+                                                desc: museumData[index].desc,
+                                                img: museumData[index].image,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: const Text("See More"),
+                                      )
+                                    ],
                                   ),
-                                  const SizedBox(
-                                    height: 20.0,
-                                  )
-                                ],
-                              );
-                            },
+                                ),
+                              ],
+                            ),
                           ),
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text("${snapshot.error}");
-                      }
-                      return Center(child: const CircularProgressIndicator());
+                          const SizedBox(
+                            height: 20.0,
+                          )
+                        ],
+                      );
                     },
                   ),
+                );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return Center(child: const CircularProgressIndicator());
+            },
+          ),
         ],
       ),
     );

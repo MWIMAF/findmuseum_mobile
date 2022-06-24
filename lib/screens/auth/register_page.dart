@@ -99,7 +99,7 @@ class _RegisterPageState extends State<RegisterPage> {
             "Email",
             (onValidateVal) {
               if (onValidateVal == null && onValidateVal.isEmpty) {
-                return "Email Can\t be Empty";
+                return "Email Can't be Empty";
               }
               return null;
             },
@@ -121,7 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
             "Password",
             (onValidateVal) {
               if (onValidateVal == null && onValidateVal.isEmpty) {
-                return "Password Can\t be Empty";
+                return "Password Can't be Empty";
               }
               return null;
             },
@@ -154,7 +154,7 @@ class _RegisterPageState extends State<RegisterPage> {
             "Full Name",
             (onValidateVal) {
               if (onValidateVal == null && onValidateVal.isEmpty) {
-                return "Name Can\t be Empty";
+                return "Name Can't be Empty";
               }
               return null;
             },
@@ -176,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
             "Username",
             (onValidateVal) {
               if (onValidateVal == null && onValidateVal.isEmpty) {
-                return "Username Can\t be Empty";
+                return "Username Can't be Empty";
               }
               return null;
             },
@@ -211,6 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   );
 
                   APIService.register(model).then((response) => {
+                    print("REG ${response.data}"),
                         setState(() {
                           isApiCallProcess = false;
                         }),

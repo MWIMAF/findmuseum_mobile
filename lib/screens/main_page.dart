@@ -35,11 +35,11 @@ class _MainPageState extends State<MainPage> {
         ),
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.account_balance_rounded),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notes),
+            icon: Icon(Icons.location_on),
             label: "Cities",
           ),
           BottomNavigationBarItem(
