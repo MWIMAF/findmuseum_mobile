@@ -8,7 +8,7 @@ import 'package:findmuseum_mobile/services/shared_services.dart';
 
 Widget _defaultHome = const LoginPage();
 
-void main()  {
+void main() {
   runApp(const MyApp());
 }
 
@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black,
         backgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: HexColor("#EC8C6F"),
-          background: HexColor("#DEFDFB"),
+          secondary: Colors.blue[300],
+          background: Colors.grey[300],
         ),
       ),
       initialRoute: '/login',

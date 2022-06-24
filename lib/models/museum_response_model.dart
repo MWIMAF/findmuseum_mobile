@@ -14,7 +14,6 @@ class MuseumResponseModel {
     required this.desc,
     required this.createdAt,
     required this.updatedAt,
-    
   });
   late final int id;
   late final int city_id;

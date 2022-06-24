@@ -10,15 +10,14 @@ class CityResponseModel {
     required this.id,
     required this.name,
     required this.slug,
-    required this.createdAt,
-    required this.updatedAt,
-    
+    this.createdAt,
+    this.updatedAt,
   });
   late final int id;
   late final String name;
   late final String slug;
-  late final String createdAt;
-  late final String updatedAt;
+  String? createdAt;
+  String? updatedAt;
 
   CityResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -29,7 +28,8 @@ class CityResponseModel {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
+    //final _data = <String, dynamic>{};
+    final Map<String, dynamic> _data = new Map<String, dynamic>();
     _data['id'] = id;
     _data['name'] = name;
     _data['slug'] = slug;

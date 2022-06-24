@@ -61,6 +61,7 @@ class _MyWidgetState extends State<CityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text("All Cities"),
       ),
       body: SafeArea(
@@ -69,10 +70,10 @@ class _MyWidgetState extends State<CityPage> {
           FutureBuilder<List<CityResponseModel>>(
             future: APIService.getCities(),
             builder: (context, snapshot) {
-              //print(snapshot.hasData);
+              print(snapshot.hasData);
               if (snapshot.hasData) {
-                List<CityResponseModel> CityData = snapshot.requireData;
-                print(CityData);
+                List<CityResponseModel> cityData = snapshot.requireData;
+                print(cityData);
                 return Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Column(
@@ -81,7 +82,7 @@ class _MyWidgetState extends State<CityPage> {
                         scrollDirection: Axis.vertical,
                         physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: CityData.length,
+                        itemCount: cityData.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Column(
                             children: [
@@ -99,7 +100,7 @@ class _MyWidgetState extends State<CityPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        CityData[index].name,
+                                        cityData[index].name,
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold,
@@ -107,7 +108,7 @@ class _MyWidgetState extends State<CityPage> {
                                         ),
                                       ),
                                       Text(
-                                        CityData[index].slug,
+                                        cityData[index].slug,
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.normal,
