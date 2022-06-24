@@ -82,12 +82,11 @@ class _LoginPageState extends State<LoginPage> {
             child: Padding(
               padding: EdgeInsets.all(20.0),
               child: Text(
-                "Login Into Your Account",
+                "Login to your account",
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                  fontFamily: "Rubik"
-                ),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    fontFamily: "Rubik"),
               ),
             ),
           ),
@@ -184,15 +183,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           const SizedBox(
-            height: 20.0,
-          ),
-          const Center(
-            child: Text(
-              "OR",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            height: 10.0,
           ),
           Align(
             alignment: Alignment.center,
@@ -206,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: "Don't Have an Account?",
+                      text: "Don't have an account? Sign in!",
                       style: const TextStyle(
                         color: Colors.black,
                         decoration: TextDecoration.underline,

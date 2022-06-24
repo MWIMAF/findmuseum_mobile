@@ -211,7 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   );
 
                   APIService.register(model).then((response) => {
-                    print("REG ${response.data}"),
+                        print("REG ${response.data}"),
                         setState(() {
                           isApiCallProcess = false;
                         }),
@@ -248,16 +248,16 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           const SizedBox(
-            height: 20.0,
+            height: 10.0,
           ),
-          const Center(
-            child: Text(
-              "OR",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          // const Center(
+          //   child: Text(
+          //     "Already have an account?",
+          //     style: TextStyle(
+          //       fontWeight: FontWeight.normal,
+          //     ),
+          //   ),
+          // ),
           Align(
             alignment: Alignment.center,
             child: Padding(
@@ -270,7 +270,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: "Create an Account",
+                      text: "Already have an account? Log in!",
                       style: const TextStyle(
                         color: Colors.black,
                         decoration: TextDecoration.underline,
