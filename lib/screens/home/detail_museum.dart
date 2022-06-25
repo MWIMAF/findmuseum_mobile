@@ -6,10 +6,11 @@ class DetailMuseum extends StatefulWidget {
   final String name;
   final String desc;
   final String img;
-  DetailMuseum(
-      {required this.name,
-      required this.desc,
-      required this.img,});
+  DetailMuseum({
+    required this.name,
+    required this.desc,
+    required this.img,
+  });
   @override
   State<DetailMuseum> createState() => _DetailMuseumState();
 }
@@ -18,6 +19,11 @@ class _DetailMuseumState extends State<DetailMuseum> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(widget.name),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -39,7 +45,7 @@ class _DetailMuseumState extends State<DetailMuseum> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.name,
+                    "Description",
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 18.0),
                   ),
