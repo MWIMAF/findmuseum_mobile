@@ -101,7 +101,7 @@ class APIService {
       'Content-Type': 'application/json',
     };
 
-    var url = Uri.http(Config.apiURL, '/api/city/${id.toString()}');
+    var url = Uri.http(Config.apiURL, '/api/museum/city/${id.toString()}');
 
     var response = await client.get(
       url,

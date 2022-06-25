@@ -140,10 +140,22 @@ class _MuseumInCityState extends State<MuseumInCity> {
                     },
                   ),
                 );
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
               }
-              return Center(child: const CircularProgressIndicator());
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: Column(
+                  children: [
+                    const Text(
+                      "No Museum found!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                  ],
+                ),
+              );
             },
           ),
         ],
