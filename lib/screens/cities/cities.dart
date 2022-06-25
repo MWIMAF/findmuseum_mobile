@@ -1,4 +1,5 @@
 import 'package:findmuseum_mobile/models/city_response_model.dart';
+import 'package:findmuseum_mobile/screens/cities/museum_in_city.dart';
 import 'package:findmuseum_mobile/screens/home/detail_museum.dart';
 import 'package:findmuseum_mobile/services/api_service.dart';
 import 'package:flutter/material.dart';
@@ -86,35 +87,48 @@ class _MyWidgetState extends State<CityPage> {
                         itemBuilder: (BuildContext context, int index) {
                           return Column(
                             children: [
-                              Container(
-                                alignment: Alignment.centerLeft,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .background),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        cityData[index].name,
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16.0,
-                                        ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MuseumInCity(
+                                        name: cityData[index].name,
+                                        cityId: cityData[index].id,
                                       ),
-                                      Text(
-                                        cityData[index].slug,
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.normal,
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .background),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          cityData[index].name,
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16.0,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          cityData[index].slug,
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

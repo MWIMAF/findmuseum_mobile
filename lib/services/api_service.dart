@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:findmuseum_mobile/models/museum_in_city_response_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:findmuseum_mobile/config.dart';
-import 'package:findmuseum_mobile/models/museum_response_model.dart';
 import 'package:findmuseum_mobile/models/login_request_model.dart';
 import 'package:findmuseum_mobile/models/login_response_model.dart';
 import 'package:findmuseum_mobile/models/city_response_model.dart';
@@ -93,6 +93,24 @@ class APIService {
 
     //Shared Services
     return cityResponseJson(response.body);
+    // }
+  }
+
+  static Future<List<MuseumInCityResponseModel>> getMuseumInCity(int id) async {
+    Map<String, String> requestHeaders = {
+      'Content-Type': 'application/json',
+    };
+
+    var url = Uri.http(Config.apiURL, '/api/city/${id.toString()}');
+
+    var response = await client.get(
+      url,
+      headers: requestHeaders,
+    );
+    print(response.body);
+
+    //Shared Services
+    return museumInCityResponseModelJson(response.body);
     // }
   }
 
