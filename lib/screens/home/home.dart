@@ -29,6 +29,7 @@ Future<List<MuseumData>> fetchMuseum() async {
 class MuseumData {
   late final int id;
   late final int city_id;
+  late final String city_name;
   late final String name;
   late final String slug;
   late final String image;
@@ -40,6 +41,7 @@ class MuseumData {
   MuseumData({
     required this.id,
     required this.city_id,
+    required this.city_name,
     required this.name,
     required this.slug,
     required this.image,
@@ -53,6 +55,7 @@ class MuseumData {
     return MuseumData(
       id: json['id'],
       city_id: json['city_id'],
+      city_name: json['city_name'],
       name: json['name'],
       slug: json['slug'],
       image: json['image'],
@@ -191,6 +194,13 @@ class _HomeState extends State<Home> {
                                         style: const TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        museumData[index].city_name,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 14),
                                       ),
                                       SizedBox(
                                         height: 8.0,
